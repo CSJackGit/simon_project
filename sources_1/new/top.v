@@ -43,7 +43,6 @@ always @(posedge clk) begin
         current_state <= GAMESTATE_IDLE;
         prng_step_count <= 0;
         prng_step_count <= 1;
-        brightest_led <= 4'b0000;
     end
     else begin
         current_state <= next_state;
