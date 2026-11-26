@@ -18,15 +18,13 @@ module PRNG #(parameter FILL = 16'hACE1)(output [1:0] random, input clk, reset, 
             randomize_d <= 1'b0;
         end
         else begin
-            if (step || randomize) begin
-                if (rerun)
-                    prng <= rerun_reg;
-                else if (step || randomize)
-                    prng <= {fb, prng[15:1]};
+            if (rerun)
+                prng <= rerun_reg;
+            else if (step || randomize)
+                prng <= {fb, prng[15:1]};
 
-                if (falling_edge_randomize)
-                    rerun_reg <= prng;
-            end
+            if (falling_edge_randomize)
+                rerun_reg <= prng;
         end
     end
 endmodule
